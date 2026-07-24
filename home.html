@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Internet OmniKeen Home</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #2b2b40);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #00d2ff;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        }
+        p {
+            color: #a0a0c0;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .search-box {
+            display: flex;
+            width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 8px 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .search-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 16px;
+        }
+        .search-box button {
+            background: #00d2ff;
+            border: none;
+            color: #1e1e2f;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-box button:hover {
+            background: #0099cc;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Internet OmniKeen</h1>
+    <p>Trình duyệt đỉnh cao của Chủ tịch</p>
+    
+    <div class="search-box">
+        <input type="text" id="query" placeholder="Tìm kiếm trên Google hoặc nhập URL..." onkeydown="if(event.key === 'Enter') search();">
+        <button onclick="search()">Khám phá</button>
+    </div>
+
+    <script>
+        function search() {
+            let q = document.getElementById('query').value.trim();
+            if(q) {
+                if(q.startsWith("http://") || q.startsWith("https://") || (q.includes(".") && !q.includes(" "))) {
+                    if(!q.startsWith("http")) q = "https://" + q;
+                    window.location.href = q;
+                } else {
+                    window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(q);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
